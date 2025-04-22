@@ -1,0 +1,214 @@
+\documentclass[12pt, letterpaper]{report}
+
+% Set 1 inch margins
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=black]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning, decorations.pathreplacing, decorations.pathmorphing, patterns, shapes, decorations.text}
+\definecolor{gold}{RGB}{207, 181, 59}
+\usepackage{librecaslon}
+\usepackage[T1]{fontenc}
+
+% Use ragged right justification (left-align text)
+\usepackage[document]{ragged2e}
+
+% Set bold chapter and section headings
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\normalfont\Large}{\thechapter}{2pc}{}
+\titleformat{\section}[hang]{\normalfont}{\thesection}{1pc}{}
+
+% For list of figures and tables
+\usepackage{tocloft}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cfttabindent}{0pt}
+
+% TOC formatting
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapfont}{\normalfont}  % Remove bold from chapter entries
+\renewcommand{\cftsecfont}{\normalfont}   % Remove bold from section entries
+\renewcommand{\cftchappagefont}{\normalfont} 
+\renewcommand{\cftsecpagefont}{\normalfont} 
+
+% For bibliography
+\usepackage{cite}
+\renewcommand{\bibname}{References}  % Change "Bibliography" to "References"
+
+% Additional packages for figures and tables
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs} % For table formatting
+
+% Paragraph indentation and hyphenation settings
+\setlength{\parskip}{1em}
+\hyphenpenalty=500          % Reduces the amount of hyphenation
+\exhyphenpenalty=1000       % Prevents hyphenation across lines
+
+
+% Document parameters
+\def\title{The title of the dissertation using sentence case: First word of subtitle capitalized}
+\def\student{Student P. Name}
+
+% Document begins
+\begin{document}
+\pagenumbering{roman}
+
+% Title Page
+\thispagestyle{empty}
+\rule{0pt}{0pt}{\centering
+\vfill
+{\LARGE\title\par}
+\vfill
+\rule{0pt}{1in}\\
+{\Large\student}\\
+\rule{0pt}{1in}\\
+\vfill
+{\large A dissertation for the\\
+Doctor of Philosophy degree\\
+presented to the faculty of the\\
+School of Data Science\\
+University of Virginia\\
+on 23 April 2024\\
+}}
+\vfill
+\rule{0pt}{0pt}
+\newpage
+% Committee page
+\thispagestyle{empty}
+\addcontentsline{toc}{chapter}{Committee}
+\rule{0in}{1in}
+\begin{center}
+{\large 
+\begin{tabular}{l}
+Dissertation committee\\
+    \ \\
+John Conway, Advisor\\
+Isaac Newton, Chair\\
+Florence Nightengale\\
+Katherine Johnson\\
+Kermit T. Frog
+\end{tabular}
+}
+\end{center}
+\newpage
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\begin{center}
+{\large\title\par}
+
+{\student}
+\end{center}
+\input{abstract.tex}
+
+\newpage
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{acknowledgements.tex}
+
+
+\newpage
+% Table of Contents
+\renewcommand{\contentsname}{}
+\chapter*{Table of Contents}
+\tableofcontents
+\newpage
+
+% List of Figures
+\renewcommand{\listfigurename}{}
+\chapter*{List of Figures}  % Format like a chapter heading
+\addcontentsline{toc}{chapter}{List of Figures}  % Add it to the TOC
+\listoffigures
+\newpage
+
+% List of Tables
+\renewcommand{\listtablename}{}
+\chapter*{List of Tables}  % Format like a chapter heading
+\addcontentsline{toc}{chapter}{List of Tables}  % Add it to the TOC
+\listoftables
+\newpage
+
+% Main content starts here
+\addtocontents{toc}{\protect\contentsline{chapter}{Chapters}{}{}}
+\chapter{Introduction}
+\pagenumbering{arabic}  % Switch to Arabic numerals
+\setcounter{page}{1}  % Start numbering from 1
+\label{ch:introduction}
+\input{01-introduction.tex}
+
+\chapter{Literature Review}
+\label{ch:lit_review}
+\input{02-literature-review.tex}
+
+% Add other chapters as needed
+\chapter{Title of first paper}
+\input{paper1.tex}
+
+\chapter{Title of second paper}
+\input{paper2.tex}
+
+\chapter{Title of third paper}
+
+\chapter{Conclusion}
+
+% Bibliography
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{plain} 
+\bibliography{references}
+
+% Code and supplementary information
+\chapter*{Code and supplementary files}  % Format like a chapter heading
+\addcontentsline{toc}{chapter}{Code and supplementary files}  % Add it to the TOC
+Code scripts and supplementary files for this dissertation are available at the following locations.
+
+\begin{center}
+\begin{tabular}{ll} \toprule
+Files & Location \\ \midrule
+Paper 1 & \href{https://www.github.com/username/reponame1}{github.com/username/reponame1} \\
+Paper 2 & \href{https://www.github.com/username/reponame2}{github.com/username/reponame2} \\
+Paper 2 & \href{https://www.github.com/username/reponame3}{github.com/username/reponame3} \\ \bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+% A unique databurst for each dissertation
+\thispagestyle{empty}
+\begin{tikzpicture}[overlay, remember picture, shift={(current page.center)}]
+    % Define the radius of the large circle
+    \def\Radius{.5} % radius for 1 inch diameter circle
+    % Number of small circles
+    \def\NumCircles{56}
+    % Radius of small circles
+    \def\SmallCircleRadius{0.05}
+    \def\NumRows{24}
+    \def\ColSkip{8}
+
+    % Draw the large circle (optional, for reference)
+    %\draw (0,0) circle (\Radius);
+
+    % Calculate angle step
+    \pgfmathsetmacro\AngleStep{360/\NumCircles}
+
+    % Draw small circles along the path
+\foreach \j in {1,...,\NumRows}
+{
+    \foreach \i in {1,...,\NumCircles}
+    {
+        \pgfmathsetmacro{\tp}{int(random(1,\NumRows)+1>=\j)}
+        \ifnum\tp=0 \relax
+          \else  
+            \pgfmathsetmacro{\tp}{random(1,100)/100}
+          \fi
+        \pgfmathparse{int(Mod(\i,\ColSkip))}
+        \ifnum\pgfmathresult=0 \relax
+            \else
+                \pgfmathsetmacro\Angle{\AngleStep*\i}
+                \draw[gold, fill=gold, opacity=\tp] (\Angle:\Radius+\j*3*\SmallCircleRadius) circle (\SmallCircleRadius);
+            \fi
+    }
+}
+\end{tikzpicture}
+
+% End of document
+\end{document}

@@ -1,0 +1,15 @@
+\contentsline {chapter}{Committee}{ii}{Doc-Start}%
+\contentsline {chapter}{Abstract}{iii}{chapter*.1}%
+\contentsline {chapter}{Acknowledgements}{v}{chapter*.2}%
+\contentsline {chapter}{List of Figures}{vii}{chapter*.4}%
+\contentsline {chapter}{List of Tables}{viii}{chapter*.5}%
+\contentsline {chapter}{Chapters}{}{}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Literature Review}{2}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Title of first paper}{4}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Title of second paper}{5}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Title of third paper}{6}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusion}{7}{chapter.6}%
+\contentsline {chapter}{References}{7}{chapter.6}%
+\contentsline {chapter}{Code and supplementary files}{9}{chapter*.10}%

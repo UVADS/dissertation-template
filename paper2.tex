@@ -1,0 +1,50 @@
+By placing the text of each chapter in its own file, you can use the file for the dissertation and for individual publications.  The formatting will automatically change depending on which document is being rendered.
+
+\begin{figure}[h]
+\begin{tikzpicture}[node distance=.9cm, every node/.style={draw, rectangle, minimum height=.8cm, minimum width=3cm}, >=stealth]
+
+    % Left column nodes
+    \node (abstract) {Abstract};
+    \node (acknowledgements) [below of=abstract] {Ack'ments};
+    \node (introduction) [below of=acknowledgements] {Introduction};
+    \node (literature) [below of=introduction] {Literature};
+    \node (paper1) [below of=literature] {Paper 1};
+    \node (paper2) [below of=paper1] {Paper 2};
+    \node (paper3) [below of=paper2] {Paper 3};
+    \node (conclusion) [below of=paper3] {Conclusion};
+    
+    % Right column node
+    \node (doc) [right=3cm of paper2] {\tt format file};
+    \node (pdf) [right=3cm of doc] {Dissertation};
+    
+    % Arrows from each left box to the right box
+    \draw[->] (abstract.east) -- (doc.west);
+    \draw[->] (acknowledgements.east) -- (doc.west);
+    \draw[->] (introduction.east) -- (doc.west);
+    \draw[->] (literature.east) -- (doc.west);
+    \draw[->] (paper1.east) -- (doc.west);
+    \draw[->] (paper2.east) -- (doc.west);
+    \draw[->] (paper3.east) -- (doc.west);
+    \draw[->] (conclusion.east) -- (doc.west);
+    \draw[->] (doc.east) -- (pdf.west);
+    
+\end{tikzpicture}
+
+\rule{0em}{2em}
+
+\begin{tikzpicture}[node distance=1.2cm, every node/.style={draw, rectangle, minimum height=.8cm, minimum width=3cm}, >=stealth]
+
+    % Left column nodes
+    \node (paper1) {Paper 1};
+    
+    % Right column node
+    \node (doc) [right=3cm of paper1] {\tt format file};
+    \node (pdf) [right=3cm of doc] {Journal article};
+
+        % Arrows from each left box to the right box
+    \draw[->] (paper1.east) -- (doc.west);
+    \draw[->] (doc.east) -- (pdf.west);
+    
+\end{tikzpicture}
+\caption{Why use {\tt input} when rendering your dissertation}
+\end{figure}
